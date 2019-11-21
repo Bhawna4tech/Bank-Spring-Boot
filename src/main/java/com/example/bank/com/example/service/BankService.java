@@ -1,6 +1,8 @@
 package com.example.bank.com.example.service;
 
+import com.example.bank.com.example.model.Account;
 import com.example.bank.com.example.model.User;
+import com.example.bank.com.example.repository.AccountRepo;
 import com.example.bank.com.example.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class BankService {
     @Autowired
     UserRepo userRepo;
 
+    @Autowired
+    AccountRepo accountRepo;
+
     public User createUser(User user){
        return userRepo.save(user);
     }
@@ -26,5 +31,19 @@ public class BankService {
         Optional<User> user = userRepo.findById(userId);
         return user.orElse(null);
     }
+
+    public Account createAccount(Account account){
+        return accountRepo.save(account);
+    }
+
+    public List<Account> getAllAccounts(){
+        return accountRepo.findAll();
+    }
+
+    public Account getAccountById(String accountId){
+        Optional<Account> account = accountRepo.findById(accountId);
+        return account.orElse(null);
+    }
+
 
 }

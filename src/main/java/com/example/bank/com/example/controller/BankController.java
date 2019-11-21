@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BankController {
 
     @GetMapping(path = "/home")
-    public ResponseEntity<Object> getHome(){
+    public ResponseEntity<Object> getHome() {
         return new ResponseEntity<>("Hello Everyone", HttpStatus.OK);
     }
 
